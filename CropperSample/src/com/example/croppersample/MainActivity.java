@@ -41,7 +41,9 @@ public class MainActivity extends Activity {
         final TextView aspectRatioYTextView = (TextView) findViewById(R.id.aspectRatioY);
         final SeekBar aspectRatioYSeekBar = (SeekBar) findViewById(R.id.aspectRatioYSeek);
         final Spinner guidelinesSpinner = (Spinner) findViewById(R.id.showGuidelinesSpin);
+        //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
         final CropImageView cropImageView = (CropImageView) findViewById(R.id.CropImageView);
+        //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
         final ImageView croppedImageView = (ImageView) findViewById(R.id.croppedImageView);
         final Button cropButton = (Button) findViewById(R.id.Button_crop);
 
@@ -49,10 +51,15 @@ public class MainActivity extends Activity {
         fixedAspectRatioToggleButton.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+                //固定长宽比,
                 cropImageView.setFixedAspectRatio(isChecked);
+                //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
                 float d = aspectRatioXSeekBar.getProgress();
-                //设置比例，两个值一样的话就是正方形
+                //设置比例，两个值一样的话就是正方形,参数为整形数据
+                //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
                 cropImageView.setAspectRatio(aspectRatioXSeekBar.getProgress(), aspectRatioYSeekBar.getProgress());
+                //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
                 aspectRatioXSeekBar.setEnabled(isChecked);
                 aspectRatioYSeekBar.setEnabled(isChecked);
             }
@@ -124,7 +131,10 @@ public class MainActivity extends Activity {
         cropButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
                 final Bitmap croppedImage = cropImageView.getCroppedImage();
+                //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+                //开始裁剪
                 croppedImageView.setImageBitmap(croppedImage);
             }
         });
